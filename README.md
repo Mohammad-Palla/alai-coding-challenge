@@ -1,5 +1,38 @@
 # Implementation Overview
 
+## Sample Timeline Image
+
+![Sample Timeline](./image.png)
+
+# Use this sample input
+
+- Q2 2024
+  April 10, 2024: User Research and Feature Specification
+
+      Finalize user research highlighting the need for a social feature that allows users to share their health achievements with friends within the app.
+      Complete detailed feature specifications, including privacy controls and user interaction models.
+      May 5, 2024: Design and Prototyping
+
+      Design user interfaces for the social sharing feature, focusing on ease of use and integration with existing app functionalities.
+      Develop a clickable prototype for internal review and early feedback from select users.
+      June 1, 2024: Development Kick-off
+
+      Start development, prioritizing core functionalities such as posting updates, friend interactions, and privacy settings.
+      Implement analytics to track user engagement and interaction with the new feature.
+      Q3 2024
+      July 25, 2024: Internal Testing and Iterations
+
+      Begin internal testing to identify bugs and usability issues.
+      Iterate on the feature based on feedback, refining the UI/UX and ensuring seamless integration with the app's existing features.
+      August 20, 2024: Beta Release and User Feedback
+
+      Release the feature to beta testers, a select group of existing users who have opted in for early access.
+      Collect and analyze user feedback, focusing on the feature's impact on user engagement and overall app experience.
+      September 30, 2024: Public Launch
+
+      Incorporate feedback from the beta release and finalize the feature for public launch.
+      Launch the new social sharing feature to all users, accompanied by a marketing campaign highlighting its benefits and functionalities.
+
 ## Imports and Setup:
 
 - Import necessary React hooks and components from `@tldraw/tldraw`.
