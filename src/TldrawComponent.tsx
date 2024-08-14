@@ -21,10 +21,11 @@ export default function TldrawComponent() {
     let currentDate: Date | null = null;
 
     for (const line of lines) {
-      const dateMatch = line.match(/(\w+\s+\d+,\s+\d{4}):/);
+      const dateMatch = line.match(/(\w+\s+\d+),\s+\d{4}:/);
       if (dateMatch) {
-        currentDate = new Date(dateMatch[1]);
-        const description = line.substring(dateMatch[0].length).trim();
+        currentDate = new Date(dateMatch[1] + ", " + new Date().getFullYear());
+        let description = line.substring(dateMatch[0].length).trim();
+        description = description.replace(/^\d{4}:\s*/, "");
         events.push({ date: currentDate, description });
       } else if (currentDate) {
         events[events.length - 1].description += " " + line.trim();
@@ -89,27 +90,25 @@ export default function TldrawComponent() {
         },
       });
 
-      // Create label for the event
+      // Determine the y-coordinate for the label (alternate above and below the timeline)
+      const labelY = i % 2 === 0 ? startY - itemHeight - 20 : startY + 20;
+
+      // Create label for the event using text shape
       const labelId = createShapeId();
       editor.createShape({
         id: labelId,
-        type: "geo",
+        type: "text",
         x: startX + i * (itemWidth + spacing) - itemWidth / 2,
-        y: startY + 20,
+        y: labelY,
         props: {
-          w: itemWidth,
-          h: itemHeight,
           text:
             event.date.toLocaleDateString() +
             "\n" +
             event.description.substring(0, 50) +
             "...",
-          geo: "rectangle",
-          fill: "solid",
           color: "black",
           font: "serif",
-          align: "middle",
-          verticalAlign: "middle",
+          size: "s",
         },
       });
 
@@ -125,7 +124,7 @@ export default function TldrawComponent() {
           },
           end: {
             x: startX + i * (itemWidth + spacing),
-            y: startY + 20,
+            y: labelY + (i % 2 === 0 ? itemHeight : 0),
           },
           color: "black",
           bend: 0,
