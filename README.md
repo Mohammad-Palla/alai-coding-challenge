@@ -1,3 +1,35 @@
+# Implementation Overview
+
+## Imports and Setup:
+
+- Import necessary React hooks and components from `@tldraw/tldraw`.
+- Define the `TimelineEvent` interface to structure the timeline events.
+
+## Component State:
+
+- Use `useState` to manage `inputText` for the textarea and `editor` for the Tldraw editor instance.
+
+## Handle Input Change:
+
+- `handleInputChange` updates `inputText` state when the textarea content changes.
+
+## Parse Input:
+
+- `parseInput` function processes the input text to extract timeline events.
+  - Splits input into lines, matches dates, and creates `TimelineEvent` objects.
+  - Removes the year from the description and sorts events by date.
+
+## Generate Timeline:
+
+- `generateTimeline` function uses the Tldraw editor to create a visual timeline.
+  - Clears existing shapes, parses input text, and creates shapes for the timeline.
+  - Draws a horizontal line, dots for events, labels, and connecting lines.
+
+## Render Component:
+
+- Renders a textarea for input and a button to generate the timeline.
+- Displays the Tldraw editor and sets the editor instance on mount.
+
 # Alai Coding Challenge: TLDraw Timeline Implementation
 
 Welcome to the Alai Coding Challenge! This project is set up with React, TypeScript, and TLDraw.
